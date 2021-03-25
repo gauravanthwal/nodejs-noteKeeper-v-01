@@ -1,0 +1,27 @@
+<%- include('./partials/start') %>
+<%- include('./partials/nav') %>
+
+<div class="container">
+    <h4 class="text-muted mt-3">Welcome <span class="text-success"><%= userName %></span></h4>
+    <div class="row ">
+        <div class="col-md-5 mt-3">
+            <form action="/notes" method="POST">
+                <textarea name="note" id="note" class="form-control" placeholder="Start writing here..."></textarea>
+                <button class="btn btn-outline-success btn-sm mt-3" type="submit">Create Note</button>
+            </form>
+        </div>
+        <div class="col-md-7">
+            <% if(notes.forEach((note)=>{ %>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p class="card-text"><span class="text-muted"><%= sn %>.</span> <%= note.note %></p>
+                        <% sn++ %>
+                        <a href="/notes/delete/<%=note._id%>" class="text-danger float-end">Delete Note</a>
+                    </div>
+                </div>
+            <% })) %>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/end') %>
