@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect(
-  "mongodb+srv://gaurav_123:gaurav@123@cluster0.jofsq.mongodb.net/noteDB",
+mongoose.connect( process.env.DATABASE_URL,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
